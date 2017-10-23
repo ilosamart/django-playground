@@ -2,3 +2,4 @@ env
 !env/.gitkeep
 .idea
 **pyc
+**/__pycache__
