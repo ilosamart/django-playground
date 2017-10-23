@@ -1,0 +1,58 @@
+- model: locations.Country
+  pk: 1
+  fields:
+    name: Brasil
+- model: locations.State
+  pk: 1
+  fields:
+    name: São Paulo
+    country: 1
+- model: locations.City
+  pk: 1
+  fields:
+    name: São Paulo
+    state: 1
+    pib: 100
+- model: locations.City
+  pk: 2
+  fields:
+    name: Santos
+    state: 1
+    pib: 5
+- model: locations.State
+  pk: 2
+  fields:
+    name: Rio Grande do Sul
+    country: 1
+- model: locations.City
+  pk: 3
+  fields:
+    name: Porto Alegre
+    state: 2
+    pib: 7
+- model: locations.Country
+  pk: 2
+  fields:
+    name: Estados Unidos da América
+- model: locations.State
+  pk: 4
+  fields:
+    name: New York
+    country: 2
+- model: locations.City
+  pk: 4
+  fields:
+    name: New York
+    state: 4
+    pib: 10
+- model: locations.State
+  pk: 3
+  fields:
+    name: California
+    country: 2
+- model: locations.City
+  pk: 5
+  fields:
+    name: San Francisco
+    state: 3
+    pib: 1
