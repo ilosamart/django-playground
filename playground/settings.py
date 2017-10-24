@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'locations',
+    'tasks',
+    'report',
 ]
 
 MIDDLEWARE = [
@@ -79,7 +81,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    },
+    'tasks': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'tasks.sqlite3'),
+    },
+    'report': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'tasks.sqlite3'),
+    },
 }
 
 
@@ -127,3 +137,5 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
 }
+
+DATABASE_ROUTERS = ['playground.dbrouters.AppLabelRouter']
