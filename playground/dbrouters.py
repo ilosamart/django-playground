@@ -1,4 +1,4 @@
-from django.conf import settings
+from playground import settings
 
 
 class DatabaseAppsRouter:
@@ -20,7 +20,8 @@ class DatabaseAppsRouter:
 
     def db_for_write(self, model, **hints):
         """Point all write operations to the specific database."""
-        return settings.DATABASE_APPS_MAPPING.get(model._meta.app_label, None)
+        # return settings.DATABASE_APPS_MAPPING.get(model._meta.app_label, None)
+        return self.db_for_read(model, **hints)
 
     def allow_relation(self, obj1, obj2, **hints):
         """Allow any relation between apps that use the same database."""
@@ -33,10 +34,9 @@ class DatabaseAppsRouter:
                 return False
         return None
 
-    def allow_syncdb(self, db, model):
-        """Make sure that apps only appear in the related database."""
-        if db in settings.DATABASE_APPS_MAPPING.values():
-            return settings.DATABASE_APPS_MAPPING.get(model._meta.app_label) == db
-        elif model._meta.app_label in settings.DATABASE_APPS_MAPPING:
-            return False
-        return None
+    def allow_migrate(self, db, app_label, model_name=None, **hints):
+        app_db = settings.DATABASE_APPS_MAPPING.get(app_label, None)
+        if app_db is not None:
+            return app_db == db
+        return True
+

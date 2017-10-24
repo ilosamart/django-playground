@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-
+from __future__ import print_function
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -88,7 +88,7 @@ DATABASES = {
     },
     'report': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'tasks.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'report.sqlite3'),
     },
 }
 
@@ -144,3 +144,4 @@ REST_FRAMEWORK = {
 }
 
 DATABASE_ROUTERS = ['playground.dbrouters.DatabaseAppsRouter']
+
