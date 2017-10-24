@@ -92,6 +92,11 @@ DATABASES = {
     },
 }
 
+DATABASE_APPS_MAPPING = {
+    'tasks': 'tasks',
+    'report': 'report',
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -138,4 +143,4 @@ REST_FRAMEWORK = {
     )
 }
 
-DATABASE_ROUTERS = ['playground.dbrouters.AppLabelRouter']
+DATABASE_ROUTERS = ['playground.dbrouters.DatabaseAppsRouter']
